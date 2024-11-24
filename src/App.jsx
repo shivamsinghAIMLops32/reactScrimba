@@ -1,9 +1,13 @@
 import React from "react";
-import { Fragment } from "react";
-import Page from "./components/Page";
+import Header from "./components/NavBar";
+import MainContent from "./components/MainContent";
+
 const App = () => {
   return (
-      <Page />
+      <div>
+        <Header/>
+        <MainContent/>
+      </div>
   );
 };
 export default App;
