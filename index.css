@@ -4,7 +4,7 @@
     padding: 0;
 }
 body {
-    padding: 20px;
+    padding: 10px 5px;
     font-family: Arial, Helvetica, sans-serif;
     background: #27292c;
     color: white;
@@ -15,10 +15,14 @@ root {
 }
 
 header {
+    height: 10vh;
+    width: auto;
     display: flex;
     justify-content: space-between; /* Corrected */
     align-items: center;
     margin-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.459);
+    overflow: hidden;
 }
 
 .nav-list {
@@ -31,12 +35,13 @@ header {
 }
 .nav-list-item {
     margin: 0 10px; 
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-list-item:hover {
     cursor: pointer;
     box-shadow: white 0px 2px 0px;
-    tranform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .nav-logo {
