@@ -1,10 +1,8 @@
 import React from 'react';
+import Page from './components/Page';
 const App = ()=>{
   return (
-     <div className='header'>hey world bye 
-      <div> <img src="/src/assets/react.svg" alt="viteLogo" /></div>
-     </div>
+    <Page/>
   )
 }
-
 export default App;
