@@ -39,7 +39,7 @@ main{
     background-image: url(https://media.istockphoto.com/id/1200461145/vector/atom-abstract-scientific-background.jpg?s=1024x1024&w=is&k=20&c=wXZz0tGz6BKjRsYMj0HU8YLaVcFXKP2QrBi6EqJwWMs=);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    /* background-position-x: right; */
 
 }
 

@@ -1,3 +1,10 @@
+```bash
+   npm create vite@latest
+   cd project-name
+   npm install
+   npm run dev
+```
+
 1. Where does react put all of the elemets I create in jsx when i call `root.render()` method ?
 All the elements i render get put inside the div with  the id of "root" in index.html file or whatever element i will choose
 
