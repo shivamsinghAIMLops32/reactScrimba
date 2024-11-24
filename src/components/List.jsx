@@ -2,9 +2,9 @@ import React from 'react'
 
 const List = (props) => {
   return (
-      <ol>
+      <ul>
         <li>{props.listContent}</li>
-    </ol>
+    </ul>
   )
 }
 
