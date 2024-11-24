@@ -1,8 +1,9 @@
-import React from 'react';
-import Page from './components/Page';
-const App = ()=>{
+import React from "react";
+import { Fragment } from "react";
+import Page from "./components/Page";
+const App = () => {
   return (
-    <Page/>
-  )
-}
+      <Page />
+  );
+};
 export default App;

@@ -33,3 +33,6 @@ root.render(
 
 5. what does it mean for something to be composable ?
  we can break large things down into smaller so easy to built and debug and low code complexity
+
+6. What is react component ?
+- a function that returns a react elemetnts.

@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import NavigationBar from "./NavigationBar";
 
 const Header = () => {
   return (
-    <img alt="reactSvg" src="src\assets\react.svg" />
-  )
-}
+    <header>
+      <img alt="reactSvg" src="src\assets\react.svg"  className="nav-logo"/>
+      <NavigationBar />
+    </header>
+  );
+};
 
-export default Header
+export default Header;
