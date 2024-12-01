@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 const UserProfile = ({ user,children }) => {
   return (
     <>
+    {user.isSubscribed ?
+     <div> <p>{children}</p>
       <p>name is { user.name}</p>
       <p>age is {user.age}</p>
       <p>email is {user.email}</p>
-      <p>{children}</p>
-      <br />
-    </>
+      <br /></div>: null}
+      </>
   );
 };
 

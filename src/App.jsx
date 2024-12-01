@@ -6,11 +6,13 @@ const userData = [
     name: "john cena",
     age: 40,
     email: "johncena80@gmail.com",
+    isSubscribed: true
   },
   {
     name: "brock lesnar",
     age: 50,
     email: "brocklesnar50@gmail.com",
+    isSubscribed: true
   },
 ];
 
@@ -19,8 +21,9 @@ const App = () => {
   return (
     <>
     {Fruits}
-      {userData.map((user) => (
-        <UserProfile user={user}>hello</UserProfile>
+      {userData.map((user,index) => (
+        <UserProfile key={index} user={user}>hello</UserProfile>
+        
       ))}
     </>
   );
