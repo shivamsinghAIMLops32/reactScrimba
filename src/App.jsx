@@ -9,14 +9,15 @@ const App = () => {
     { id: 4, username: "user4", email: "email4" },
   ]);
 
+  const [newUser, setNewUser] = useState({
+    username: "",
+    email: "",
+  });
+
   const addingNewUser = () => {
-    const newId = users.length > 0 ? users[users.length - 1].id + 1 : 1; // Calculate new ID
-    const newUser = {
-      id: newId,
-      username: `newUser${newId}`,
-      email: `newUser${newId}@email.com`,
-    };
-    setUsers([...users, newUser]);
+    const newId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+    setUsers([...users, { id: newId, ...newUser }]);
+    setNewUser({ username: "", email: "" }); // Reset newUser
   };
 
   return (
@@ -25,7 +26,30 @@ const App = () => {
         <UserDetails user={user} key={user.id} setUsers={setUsers} />
       ))}
       <br />
-      <button onClick={addingNewUser}>Add New User</button>
+
+      <label htmlFor="username">Username: </label>
+      <input
+        type="text"
+        id="newUser"
+        name="newUser"
+        value={newUser.username}
+        onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+      />
+      <br />
+
+      <label htmlFor="email">Email: </label>
+      <input
+        type="email"
+        id="newEmail"
+        name="newEmail"
+        value={newUser.email}
+        onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+      />
+      <br />
+
+      <button onClick={addingNewUser} disabled={!newUser.username || !newUser.email}>
+        Add New User
+      </button>
     </>
   );
 };
