@@ -36,10 +36,10 @@ root.render(
 ```
 
 4. What does it mean for something to be "declarative" instead of "imperative" :
- declarative is more often just tell or describe what to do not explaining each instruction how and why. while imperaitve is when we have to instruct every single thing manually.
+declarative is more often just tell or describe what to do not explaining each instruction how and why. while imperaitve is when we have to instruct every single thing manually.
 
 5. what does it mean for something to be composable ?
- we can break large things down into smaller so easy to built and debug and low code complexity
+we can break large things down into smaller so easy to built and debug and low code complexity
 
 6. What is react component ?
-- a function that returns a react elemetnts.
+a function that returns a react elemetnts.

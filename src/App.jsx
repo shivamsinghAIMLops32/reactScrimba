@@ -1,12 +1,13 @@
 import React from "react";
-import Header from "./components/NavBar";
-import MainContent from "./components/MainContent";
+import Header from "./components/Header";
+import Card from "./components/Card";
+
 
 const App = () => {
   return (
       <div>
-        <Header/>
-        <MainContent/>
+        <Header />
+        <Card />
       </div>
   );
 };
