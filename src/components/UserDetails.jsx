@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const UserDetails = ({ user, setUsers }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
+
+  // Sync state when user prop changes
+  useEffect(() => {
+    setUsername(user.username);
+    setEmail(user.email);
+  }, [user]);
 
   const handleSave = () => {
     setUsers((currentUsersState) =>
@@ -14,7 +20,7 @@ const UserDetails = ({ user, setUsers }) => {
           : currentUser
       )
     );
-    setIsEditing(false); // Exit edit mode
+    setIsEditing(false);
   };
 
   return (
@@ -33,7 +39,7 @@ const UserDetails = ({ user, setUsers }) => {
             onChange={(e) => setUsername(e.target.value)}
           />
         ) : (
-          <span>{username}</span> // Show updated username
+          <span>{username}</span>
         )}
         <br />
         <b>Email: </b>
@@ -46,7 +52,7 @@ const UserDetails = ({ user, setUsers }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         ) : (
-          <span>{email}</span> // Show updated email
+          <span>{email}</span>
         )}
         <br />
       </div>
@@ -62,7 +68,9 @@ const UserDetails = ({ user, setUsers }) => {
         <button
           onClick={() =>
             setUsers((currentUsersState) =>
-              currentUsersState.filter((currentUser) => currentUser.id !== user.id)
+              currentUsersState.filter(
+                (currentUser) => currentUser.id !== user.id
+              )
             )
           }
         >
