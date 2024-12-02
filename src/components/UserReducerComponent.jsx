@@ -1,11 +1,6 @@
-import React from "react";
-import { useReducer } from "react";
+import React,{ useReducer } from "react";
 
-
-// so basically user reducer takes and reducer function which can be implemented via switch case
-// the reducer function takes state and action parameter
-// where the {action.type} is the action parameter is passed in switch and action.payload is the payload given in input field
-// {state.theVariableNameorintialstatename} is used to acced the value or state variable
+// Reducer function
 const reducer = (state, action) => {
   switch (action.type) {
     case "increment":
@@ -15,13 +10,19 @@ const reducer = (state, action) => {
       return { ...state, count: state.count - 1 };
 
     case "newUserInput":
-      return { ...state, userInput: action.payload }; // action.payload would be dispatched
+      return { ...state, userInput: action.payload };
 
     case "toggleColor":
       return { ...state, color: !state.color };
 
     case "changePassword":
       return { ...state, userPassword: action.payload };
+
+    case "addByAmount":
+      return { ...state, amount: state.amount + action.payload };
+
+    case "subtractByAmount":
+      return { ...state, amount: state.amount > 0 ? state.amount - action.payload : state.amount };
 
     default:
       throw new Error("Invalid action");
@@ -34,34 +35,78 @@ const UserReducerComponent = () => {
     userInput: "",
     userPassword: "",
     color: false,
+    amount: 0,
   });
-  return (
-    <>
-      <input
-        type="text"
-        value={state.userInput}
-        onChange={(e) =>
-          dispatch({ type: "newUserInput", payload: e.target.value })
-        }
-      />
-      <br />
 
-      <h3>{` my name is ${state.userInput}`}</h3>
-      <br />
-      <br />
-      <input
-        type="password"
-        value={state.userPassoword}
-        onChange={(e) =>
-          dispatch({ type: "changePassword", payload: e.target.value })
-        }
-      />
-      <h4>{`my password is ${state.userPassword}`}</h4>
-      <br />
+  // Local state to handle input for "add" and "subtract" amounts
+  const [addAmount, setAddAmount] = React.useState(0);
+  const [subtractAmount, setSubtractAmount] = React.useState(0);
+
+  return (
+    <div>
+      <h2>User Reducer Demo</h2>
+
+      <label>
+        Name:
+        <input
+          type="text"
+          value={state.userInput}
+          onChange={(e) =>
+            dispatch({ type: "newUserInput", payload: e.target.value })
+          }
+        />
+      </label>
+      <h3>{`My name is: ${state.userInput}`}</h3>
+
+      <label>
+        Password:
+        <input
+          type="password"
+          value={state.userPassword}
+          onChange={(e) =>
+            dispatch({ type: "changePassword", payload: e.target.value })
+          }
+        />
+      </label>
+      <h4>{`My password is: ${state.userPassword}`}</h4>
+
       <h1>Counter: {state.count}</h1>
       <button onClick={() => dispatch({ type: "increment" })}>+</button>
       <button onClick={() => dispatch({ type: "decrement" })}>-</button>
-    </>
+
+      <div>
+        <h3>Manage Amount</h3>
+        <label>
+          Add Amount:
+          <input
+            type="number"
+            value={addAmount}
+            onChange={(e) => setAddAmount(Number(e.target.value))}
+          />
+        </label>
+        <button onClick={() => dispatch({ type: "addByAmount", payload: addAmount })}>
+          Add
+        </button>
+
+        <label>
+          Subtract Amount:
+          <input
+            type="number"
+            value={subtractAmount}
+            onChange={(e) => setSubtractAmount(Number(e.target.value))}
+          />
+        </label>
+        <button
+          onClick={() =>
+            dispatch({ type: "subtractByAmount", payload: subtractAmount })
+          }
+        >
+          Subtract
+        </button>
+
+        <h4>Current Amount: {state.amount}</h4>
+      </div>
+    </div>
   );
 };
 
